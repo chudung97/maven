@@ -1,5 +1,6 @@
 package dungcc.testcase;
 
+import org.openqa.selenium.Keys;
 import dungcc.base.ValidateHelper;
 import dungcc.pages.SigninPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -17,7 +18,9 @@ import org.testng.annotations.Test;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
+
 
 public class Signin {
     private WebDriver driver;
@@ -28,6 +31,43 @@ public class Signin {
     private By submitBtn = By.xpath("//button[normalize-space()='Log in']");
     private SigninPage signinPage;
 
+//    @Test
+//    public boolean verifyValueOfTextboxSearch(String text){
+//        Boolean value = true;
+//        List<WebElement> element = driver.findElements(listValueSearch);
+//        for (WebElement element : elements) {
+//            System.out.println(element.getText());
+//            if (!elememt.getText().equals(text)) {
+//                value = false;
+//            }}
+//        return value;
+//    }
+
+    @Test
+    public void demoToGG() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.navigate().to("https://www.google.com/?hl=vi");
+        driver.manage().timeouts().implicitlyWait(7000, TimeUnit.SECONDS);
+        driver.findElement(By.xpath("//input[@title='Tìm kiếm']")).sendKeys("Demo with selenium");
+        List<WebElement> elements = driver.findElements(By.xpath("//div[@role='option']"));
+        System.out.println(elements);
+        for (WebElement element : elements) {
+            System.out.println(element.getText());
+//            if (!element.getText().equals("Demo with selenium")) {
+//                value = false;
+            }
+//        Boolean value = true;
+//        List<WebElement> elements = driver.findElements(listValueSearch);
+//        for (WebElement element : elements) {
+//            System.out.println(element.getText());
+//            if (!element.getText().equals("Demo with selenium")) {
+//                value = false;
+//            }}
+//        return value;
+        driver.quit();
+    }
     @Test
     public void abc() {
         WebDriverManager.chromedriver().setup();
@@ -35,7 +75,7 @@ public class Signin {
         driver.manage().window().maximize();
         validateHelper = new ValidateHelper(driver);
         signinPage = new SigninPage(driver);
-        driver.get("https://stag.weuptech.vn/en/web/login");
+        driver.get("https://www.google.com/?hl=vi");
         signinPage.singIn("dungcc@weupgroup.vn", "123456");
         driver.manage().timeouts().implicitlyWait(2000, TimeUnit.SECONDS);
         validateHelper.clickElement(dropUser);
