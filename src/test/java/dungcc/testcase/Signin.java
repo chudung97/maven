@@ -66,7 +66,7 @@ public class Signin {
 //                value = false;
 //            }}
 //        return value;
-        driver.quit();
+//        driver.quit();
     }
     @Test
     public void abc() {
@@ -75,7 +75,7 @@ public class Signin {
         driver.manage().window().maximize();
         validateHelper = new ValidateHelper(driver);
         signinPage = new SigninPage(driver);
-        driver.get("https://www.google.com/?hl=vi");
+        driver.get("https://react.salesbox.com/sign-in?mode=login");
         signinPage.singIn("dungcc@weupgroup.vn", "123456");
         driver.manage().timeouts().implicitlyWait(2000, TimeUnit.SECONDS);
         validateHelper.clickElement(dropUser);

@@ -36,7 +36,7 @@ public class demo {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.navigate().to("https://www.google.com/?hl=vi");
+        driver.navigate().to("https://react.salesbox.com/sign-in?mode=login");
         String title = driver.getTitle();
         System.out.println(title);
         driver.findElement(By.xpath("//input[@title='Tìm kiếm']")).sendKeys("Demo with selenium");
